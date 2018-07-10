@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Libreria</string>
+    <string name="title_text">¿Calificarías con 5 estrellas nuestra app?</string>
+    <string name="rate_now_text">Si, me gusta</string>
+    <string name="remined_me_later_text">Tal vez luego</string>
+    <string name="no_rhanks_text">No, gracias</string>
+
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Librería</string>
+    <string name="title_text">¿Cuanto te gusta esta app?</string>
+    <string name="rate_now_text">Calificar ahora</string>
+    <string name="remined_me_later_text">Avisame luego</string>
+    <string name="no_rhanks_text">No me gusta</string>
+
+</resources>
