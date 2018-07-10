@@ -69,7 +69,7 @@ public class MyAppRating {
         //tryShow(mContext);
     }
 
-    public void showIfNeeded(String title, String rateNowText, String reminedMeLaterText,
+    public void showIfNeeded(String title, String rateNowText,String reminedMeLaterText,
                              String noThanksText, int backGroundColor) {
         if (mCondition != null) {
             if (mCondition.shouldShow())

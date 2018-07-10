@@ -67,6 +67,17 @@
                     </View>
 
                     <TextView
+                        android:id="@+id/tvSendEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/open_sans_semi_bold"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text=""
+                        android:textSize="16sp" />
+
+                    <TextView
                         android:id="@+id/tvRateNow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

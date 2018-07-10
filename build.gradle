@@ -8,7 +8,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.3'
-        
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -20,6 +21,30 @@ allprojects {
         google()
         jcenter()
     }
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'RatingDialog'
+
+    publishedGroupId = 'com.imotiongames'
+    libraryName = 'RatingDialog'
+    artifact = 'RatingDialog'
+
+    libraryDescription = 'Rating Dialog Library'
+
+    siteUrl = 'https://github.com/imotiongames/RatingDialog'
+    gitUrl = 'https://github.com/imotiongames/RatingDialog.git'
+
+    libraryVersion = '1.0'
+
+    developerId = 'imotiongames'
+    developerName = 'iMOTION Games'
+    developerEmail = 'imotionbox@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }
 
 task clean(type: Delete) {
