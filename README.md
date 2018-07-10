@@ -1,7 +1,5 @@
 # AppRatingDialog
 
-<img src="#" width="320px">
-
 Default conditions to show:
 
 1. User opened the app after 3 days of first opening.
