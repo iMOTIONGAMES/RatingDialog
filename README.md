@@ -1,6 +1,6 @@
 # AppRatingDialog
 
-<img src="http://res.cloudinary.com/duyx74vfd/image/upload/v1529498210/Screenshot_2018-06-14-17-49-19_uwosum.png" width="320px">
+<img src="#" width="320px">
 
 Default conditions to show:
 
@@ -100,6 +100,6 @@ allprojects {
 ```
 ```
 dependencies {
-    implementation 'com.github.TecOrb-Developers:AppRatingDialog:1.1'
+    implementation 'com.github.iMOTIONGAMES:RatingDialog:1.1'
 }
 ```

@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements RatingListener{
     @Override
     protected void onResume() {
         super.onResume();
+
         dialog.showIfNeeded(getString(R.string.title_text),getString(R.string.rate_now_text),
                getString(R.string.remined_me_later_text),getString(R.string.no_rhanks_text),
                ContextCompat.getColor(context,R.color.colorWhite));
