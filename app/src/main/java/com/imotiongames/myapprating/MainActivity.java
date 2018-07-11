@@ -8,8 +8,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.imotiongames.dialograting.Callbacks.RatingListener;
-import com.imotiongames.dialograting.MyAppRating;
+import com.imotiongames.ratingdialog.Callbacks.RatingListener;
+import com.imotiongames.ratingdialog.MyAppRating;
 
 public class MainActivity extends AppCompatActivity implements RatingListener{
 
