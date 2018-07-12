@@ -1,5 +1,23 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven' // your repo name
+    bintrayName = 'RatingDialog' // has to be same as your library module name
+    publishedGroupId = 'com.imotiongames.utils' // your module package name
+    libraryName = 'RatingDialog'
+    artifact = 'RatingDialog' // has to be same as your library module name
+    libraryDescription = 'Rating Dialog Library'
+    siteUrl = 'https://github.com/iMOTIONGAMES/RatingDialog'
+    gitUrl = 'https://github.com/iMOTIONGAMES/RatingDialog.git'
+    libraryVersion = '1.0'
+    developerId = 'imotiongames'
+    developerName = 'iMOTIONGAMES'
+    developerEmail = 'imotionbox@gmail.com'
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -9,6 +27,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+    }
+    lintOptions {
+        abortOnError false
     }
 
     buildTypes {
@@ -34,26 +55,110 @@ dependencies {
     api 'com.android.support:cardview-v7:27.1.1'
 }
 
-ext {
-    bintrayRepo = 'RatingDialog'
-    bintrayName = 'RatingDialog'
+apply plugin: 'com.github.dcendents.android-maven'
 
-    publishedGroupId = 'com.imotiongames'
-    libraryName = 'RatingDialog'
-    artifact = 'RatingDialog'
+group = publishedGroupId // Maven Group ID for the artifact
 
-    libraryDescription = 'Rating Dialog Library.'
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                groupId publishedGroupId
+                artifactId artifact
 
-    siteUrl = 'https://github.com/iMOTIONGAMES/RatingDialog'
-    gitUrl = 'https://github.com/iMOTIONGAMES/RatingDialog.git'
+                // Add your description here
+                name libraryName
+                description libraryDescription
+                url siteUrl
 
-    libraryVersion = '1.0'
+                // Set your license
+                licenses {
+                    license {
+                        name licenseName
+                        url licenseUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id developerId
+                        name developerName
+                        email developerEmail
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
 
-    developerId = 'iMOTIONGAMES'
-    developerName = 'iMOTIONGAMES'
-    developerEmail = 'developer@email.com'
+                }
+            }
+        }
+    }
+}
 
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
+// Bintray section
+// As long as you add bintray.user and bintray.apikey to the local.properties
+// file, you shouldn't have to change anything here. The reason you
+// don't just write them here is so that they won't be publicly visible
+// in GitHub or wherever your source control is.
+
+apply plugin: 'com.jfrog.bintray'
+
+version = libraryVersion
+
+if (project.hasProperty("android")) { // Android libraries
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+    task javadoc(type: Javadoc) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    }
+} else { // Java libraries
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = libraryDescription
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = allLicenses
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = libraryDescription
+            gpg {
+                // optional GPG encryption. Default is false.
+                sign = false
+                //passphrase = properties.getProperty("bintray.gpg.password")
+            }
+        }
+    }
 }
