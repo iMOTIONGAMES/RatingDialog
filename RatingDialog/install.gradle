@@ -1,0 +1,39 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.imotiongames.utils' // CREATE A GROUP ID FOR YOUR LIBRARY
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId 'com.imotiongames.utils' // CREATE A GROUP ID FOR YOUR LIBRARY
+                artifactId 'RatingDialog' // THE NAME OF YOUR MODULE
+
+                name 'RatingDialog' // YOUR LIBRARY NAME
+                description 'Rating Dialog Library' // YOUR LIBRARY DESCRIPTION
+                url 'https://github.com/iMOTIONGAMES/RatingDialog' // YOUR SITE
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'imotiongames' //YOUR ID
+                        name 'iMOTION GAMES' //YOUR NAME
+                        email 'imotionbox@gmail.com' //YOUR EMAIL
+                    }
+                }
+                scm {
+                    connection 'https://github.com/iMOTIONGAMES/RatingDialog.git' // YOUR GIT REPO
+                    developerConnection 'https://github.com/iMOTIONGAMES/RatingDialog.git' // YOUR GIT REPO
+                    url 'https://github.com/iMOTIONGAMES/RatingDialog' // YOUR SITE
+
+                }
+            }
+        }
+    }
+}
