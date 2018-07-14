@@ -98,6 +98,6 @@ allprojects {
 ```
 ```
 dependencies {
-    implementation 'com.github.iMOTIONGAMES:RatingDialog:1.1'
+    implementation 'com.imotiongames.utils:RatingDialog:1.0'
 }
 ```
